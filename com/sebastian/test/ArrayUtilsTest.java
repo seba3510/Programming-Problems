@@ -1,6 +1,8 @@
 package com.sebastian.test;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -102,5 +104,37 @@ public class ArrayUtilsTest {
         } // catch()
 
     }// testReverseForEmptyArray()
+
+    @Test
+    public void testSearch() {
+
+        int[] arr1 = { 1, 2, 3, 4, 5 };
+        int expected1 = 2;
+        int result1 = obj.search(arr1, 3);
+        assertEquals(expected1, result1);
+
+        int result2 = obj.search(arr1, 5);
+        int expected2 = 4;
+        assertEquals(expected2, result2);
+
+        int result3 = obj.search(arr1, 10);
+        int expected3 = -1;
+        assertEquals(result3, expected3);
+
+    }// testSearch()
+
+    @Test
+    public void testisPresent() {
+
+        int[] arr1 = { 1, 2, 3, 4, 5 };
+        assertTrue(obj.isPresent(arr1, 2));
+
+        int[] arr2 = { -3, -2, -1, 0, 1, 2 };
+        assertFalse(obj.isPresent(arr2, 6));
+
+        int[] arr3 = new int[0];
+        assertFalse(obj.isPresent(arr3, 8));
+
+    }// testisPresent()
 
 }// class

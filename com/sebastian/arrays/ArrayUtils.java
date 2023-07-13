@@ -4,6 +4,9 @@ import java.util.Stack;
 
 public class ArrayUtils {
 
+    /**
+     * Default constructor
+     */
     public ArrayUtils() {
     }
 
@@ -37,6 +40,7 @@ public class ArrayUtils {
      * @param i
      *            Keeps track of the indexes of the values in the array
      * @return
+     *         The largest value in the array
      */
     private int findMax(int[] arr, int i) {
 
@@ -79,8 +83,7 @@ public class ArrayUtils {
         // holds the elements in reverse order
         int[] rev = new int[n];
 
-        // push the elements of the stack into a new array
-
+        // push the elements of the stack into the new array
         for (int i = 0; i < n; i++) {
 
             rev[i] = temp.pop();
@@ -94,12 +97,46 @@ public class ArrayUtils {
 
     public boolean isPresent(int[] arr, int key) {
 
-        return search(arr, key) != -1;
+        int pos = search(arr, key);
+
+        return (pos != -1);
 
     }// isPresent()
 
     public int search(int[] arr, int key) {
 
+        int hi = arr.length - 1;
+        int lo = 0;
+        return search(arr, key, lo, hi);
+
+    }// search()
+
+    private int search(int[] arr, int key, int lo, int hi) {
+
+        if ((lo <= hi)) {
+
+            int mid = (lo + hi) / 2;
+
+            if ((key == arr[mid])) {
+
+                return mid;
+
+            }
+
+            else if ((key < arr[mid])) {
+
+                return search(arr, key, lo, mid - 1);
+
+            }
+
+            else {
+
+                return search(arr, key, mid + 1, hi);
+            }
+
+        } // if()
+
+        return -1;
     }// search()
 
     /**
