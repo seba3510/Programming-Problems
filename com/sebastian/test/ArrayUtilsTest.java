@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -136,5 +138,20 @@ public class ArrayUtilsTest {
         assertFalse(obj.isPresent(arr3, 8));
 
     }// testisPresent()
+
+    @Test
+    public void testOddPositions() {
+
+        int[] arr1 = { 1, 2, 3, 4, 5 };
+        String expected1 = "[1, 3, 5]";
+        List<Integer> result1 = obj.oddPositions(arr1);
+        assertEquals(expected1, result1.toString());
+
+        int[] arr2 = {};
+        String expected2 = "[]";
+        List<Integer> result2 = obj.oddPositions(arr2);
+        assertEquals(expected2, result2.toString());
+
+    }// testOddPositions()
 
 }// class

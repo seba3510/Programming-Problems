@@ -1,7 +1,16 @@
 package com.sebastian.arrays;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
+/**
+ * This class contains utility methods for arrays
+ * 
+ * @author
+ *         Sebastian L. Corporan Berrios
+ *         date: 07/13/2023
+ */
 public class ArrayUtils {
 
     /**
@@ -189,6 +198,31 @@ public class ArrayUtils {
 
         return -1;
     }// search()
+
+    /**
+     * Returns a list containing the elements of odd positions in the array
+     * 
+     * @param arr
+     *            The given array
+     * @return
+     *         A list containing the elements in odd positions
+     */
+    public List<Integer> oddPositions(int[] arr) {
+
+        int n = arr.length;
+
+        List<Integer> result = new ArrayList<Integer>();
+
+        for (int i = 0; i < n; i++) {
+
+            if ((i % 2 == 0)) {
+                result.add(arr[i]);
+            }
+        } // for loop
+
+        return result;
+
+    }// oddPositions()
 
     /**
      * Returns a string representation of the given array
