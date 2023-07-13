@@ -1,5 +1,7 @@
 package com.sebastian.arrays;
 
+import java.util.Stack;
+
 public class ArrayUtils {
 
     public ArrayUtils() {
@@ -31,7 +33,9 @@ public class ArrayUtils {
      * Helper method to find the maximum value in the array
      * 
      * @param arr
+     *            The given array
      * @param i
+     *            Keeps track of the indexes of the values in the array
      * @return
      */
     private int findMax(int[] arr, int i) {
@@ -53,22 +57,50 @@ public class ArrayUtils {
      * @param arr
      *            The array to reverse
      * @return
-     *         A new array with the elements in reversed order
+     *         The modified array with its elements in reversed order
      */
     public int[] reverse(int[] arr) {
 
         int n = arr.length;
-        int[] temp = new int[n];
 
-        int i = n - 1;
+        if ((n == 0)) {
+            throw new EmptyArrayException("Cannot reverse an empty array");
+        }
 
-        while ((i >= 0)) {
+        Stack<Integer> temp = new Stack<>();
 
-            temp[i] = arr[i];
-            i--;
-        } // while loop
-        return temp;
+        // push items of array into the stack
+        for (int i = 0; i < n; i++) {
+
+            temp.push(arr[i]);
+
+        } // for loop
+
+        // holds the elements in reverse order
+        int[] rev = new int[n];
+
+        // push the elements of the stack into a new array
+
+        for (int i = 0; i < n; i++) {
+
+            rev[i] = temp.pop();
+
+        } // for loop
+
+        arr = rev;
+
+        return arr;
     }// reverse()
+
+    public boolean isPresent(int[] arr, int key) {
+
+        return search(arr, key) != -1;
+
+    }// isPresent()
+
+    public int search(int[] arr, int key) {
+
+    }// search()
 
     /**
      * Returns a string representation of the given array
@@ -76,7 +108,7 @@ public class ArrayUtils {
      * @param arr
      *            The array to display
      * @return
-     *         A string representation of the array
+     *         The string representation of the array
      */
     public String display(int[] arr) {
 
