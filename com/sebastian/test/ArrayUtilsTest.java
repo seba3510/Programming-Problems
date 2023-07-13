@@ -1,6 +1,5 @@
 package com.sebastian.test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -14,13 +13,14 @@ import com.sebastian.arrays.EmptyArrayException;
 
 public class ArrayUtilsTest {
 
+    /** Instance of {@link ArrayUtils} to test */
     private ArrayUtils obj;
 
     @Before
     public void setUp() {
 
         obj = new ArrayUtils();
-    }
+    }// setUp()
 
     @Test
     public void testFindMax() {

@@ -33,7 +33,7 @@ public class ArrayUtils {
     }// findMax()
 
     /**
-     * Helper method to find the maximum value in the array
+     * Recursively finds the maximum value in the array
      * 
      * @param arr
      *            The given array
@@ -73,12 +73,7 @@ public class ArrayUtils {
 
         Stack<Integer> temp = new Stack<>();
 
-        // push items of array into the stack
-        for (int i = 0; i < n; i++) {
-
-            temp.push(arr[i]);
-
-        } // for loop
+        pushItems(temp, arr);
 
         // holds the elements in reverse order
         int[] rev = new int[n];
@@ -95,6 +90,36 @@ public class ArrayUtils {
         return arr;
     }// reverse()
 
+    /**
+     * Pushes the elements of the array into the stack
+     * 
+     * @param temp
+     *             The stack to store the elements of the array
+     * @param arr
+     *             The given array to store its elements in the stack
+     */
+    private void pushItems(Stack<Integer> temp, int[] arr) {
+
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+
+            temp.push(arr[i]);
+
+        } // for loop
+
+    }// fill()
+
+    /**
+     * Checks whether the given element is present in the array
+     * 
+     * @param arr
+     *            The given array to check
+     * @param key
+     *            The value to check if present in the array
+     * @return
+     * 
+     *         {@code true} if the element is present, {@code false} otherwise
+     */
     public boolean isPresent(int[] arr, int key) {
 
         int pos = search(arr, key);
@@ -103,6 +128,16 @@ public class ArrayUtils {
 
     }// isPresent()
 
+    /**
+     * Searches for the given element using the binary search algorithm
+     * 
+     * @param arr
+     *            The given array
+     * @param key
+     *            The key of the element to search
+     * @return
+     *         {@link ArrayUtils#search(int[], int, int, int)}
+     */
     public int search(int[] arr, int key) {
 
         int hi = arr.length - 1;
@@ -111,6 +146,22 @@ public class ArrayUtils {
 
     }// search()
 
+    /**
+     * Recursive helper method that searches for the given element using the binary
+     * search algorithm
+     * 
+     * @param arr
+     *            The given array
+     * @param key
+     *            The key of the element to search
+     * 
+     * @param lo
+     *            The left-most element to in the array
+     * @param hi
+     *            The right-most element in the array
+     * @return
+     *         The position of the element if found, {@code -1} otherwise
+     */
     private int search(int[] arr, int key, int lo, int hi) {
 
         if ((lo <= hi)) {
