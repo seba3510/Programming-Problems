@@ -1,5 +1,7 @@
 package com.sebastian.test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
@@ -35,5 +37,18 @@ public class StringUtilsTest {
         assertEquals(expected3, result3);
 
     }// testReverseString()
+
+    @Test
+    public void testPalindrome() {
+        String str1 = "luis";
+        assertFalse(obj.isPalindrome(str1));
+
+        String str2 = "kayak";
+        assertTrue(obj.isPalindrome(str2));
+
+        String str3 = "";
+        assertTrue(obj.isPalindrome(str3));
+
+    }// testPalindrome()
 
 }// class
