@@ -225,6 +225,43 @@ public class ArrayUtils {
     }// oddPositions()
 
     /**
+     * Returns a list containing the first n fibonacci numbers
+     * 
+     * @param n
+     *          The number to calculate its fibonacci sequence
+     * @return
+     *         A list containing the first n fibonacci numbers
+     * 
+     * @throws IllegalArgumentException
+     *                                  If the given number is negative
+     */
+    public int fib(int n) {
+
+        checkNotNegative(n);
+
+        int[] fib = new int[n + 2];
+        fib[0] = 0;
+        fib[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+
+            fib[i] = fib[i - 1] + fib[i - 2];
+        } // for loop
+
+        return fib[n];
+
+    }// fib()
+
+    private void checkNotNegative(int n) {
+
+        if ((n < 0)) {
+
+            throw new IllegalArgumentException("Negative number: " + n);
+        }
+
+    }// checkNotNegative()
+
+    /**
      * Returns a string representation of the given array
      * 
      * @param arr
