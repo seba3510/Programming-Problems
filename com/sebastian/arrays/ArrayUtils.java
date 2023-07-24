@@ -1,6 +1,7 @@
 package com.sebastian.arrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -64,6 +65,16 @@ public class ArrayUtils {
 
     }// findMax()
 
+    private int size(int[] arr) {
+
+        return arr.length;
+    }// size()
+
+    private boolean isEmpty(int[] arr) {
+
+        return (size(arr) == 0);
+    }// isEmpty()
+
     /**
      * Reverses the order of the elements of the given array
      * 
@@ -76,7 +87,7 @@ public class ArrayUtils {
 
         int n = arr.length;
 
-        if ((n == 0)) {
+        if ((isEmpty(arr))) {
             throw new EmptyArrayException("Cannot reverse an empty array");
         }
 
@@ -215,7 +226,7 @@ public class ArrayUtils {
 
         for (int i = 0; i < n; i++) {
 
-            if ((i % 2 == 0)) {
+            if ((i % 2 != 0)) {
                 result.add(arr[i]);
             }
         } // for loop
@@ -237,18 +248,8 @@ public class ArrayUtils {
      */
     public int fib(int n) {
 
+        // TODO: Complete this method
         checkNotNegative(n);
-
-        int[] fib = new int[n + 2];
-        fib[0] = 0;
-        fib[1] = 1;
-
-        for (int i = 2; i <= n; i++) {
-
-            fib[i] = fib[i - 1] + fib[i - 2];
-        } // for loop
-
-        return fib[n];
 
     }// fib()
 
@@ -260,6 +261,13 @@ public class ArrayUtils {
         }
 
     }// checkNotNegative()
+
+    public int[] merge(int[] arr1, int[] arr2) {
+
+        // TODO: Complete this method
+        return null;
+
+    }// merge()
 
     /**
      * Returns a string representation of the given array
