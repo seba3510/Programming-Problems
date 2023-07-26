@@ -12,6 +12,7 @@ import javax.swing.tree.ExpandVetoException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import com.sebastian.arrays.ArrayUtils;
 import com.sebastian.arrays.EmptyArrayException;
@@ -185,6 +186,53 @@ public class ArrayUtilsTest {
         assertEquals(expected4, obj.display(result4));
 
     }// testDigits()
+
+    @Test
+    public void testFibonacciForNegative() {
+
+        try {
+            obj.fibonacci(-10);
+
+            fail("Test failed for negative number");
+        } catch (IllegalArgumentException e) {
+            // TODO: handle exception
+
+            String expected = e.getMessage();
+            String result = "Negative number: -10";
+            assertEquals(expected, result);
+        } // catch()
+
+    }// testFibonacciForNegative()
+
+    @Test
+    public void testFibonacci() {
+
+        int n1 = 5;
+        int[] result1 = obj.fibonacci(n1);
+        String expected1 = "[0, 1, 1, 2, 3, 5]";
+        assertEquals(expected1, obj.display(result1));
+
+        int n2 = 10;
+        int[] result2 = obj.fibonacci(n2);
+        String expected2 = "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]";
+        assertEquals(expected2, obj.display(result2));
+
+        int n3 = 14;
+        int[] result3 = obj.fibonacci(n3);
+        String expected3 = "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]";
+        assertEquals(expected3, obj.display(result3));
+
+        int n4 = 0;
+        int[] result4 = obj.fibonacci(n4);
+        String expected4 = "[0]";
+        assertEquals(expected4, obj.display(result4));
+
+        int n5 = 1;
+        int[] result5 = obj.fibonacci(n5);
+        String expected5 = "[0, 1]";
+        assertEquals(expected5, obj.display(result5));
+
+    }// testFibonacci()
 
     @Test
     public void testSelectionSort() {

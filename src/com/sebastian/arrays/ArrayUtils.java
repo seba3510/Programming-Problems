@@ -397,6 +397,61 @@ public class ArrayUtils {
     }// bubbleSort()
 
     /**
+     * Returns a list containing the first n fibonacci numbers
+     * 
+     * @param n
+     *          The given number
+     * @return
+     * 
+     *         A list containing the first n fibonacci numbers
+     */
+    public int[] fibonacci(int n) {
+
+        checkNotNegative(n);
+
+        if ((n == 0)) {
+            return new int[] { 0 };
+
+        }
+
+        else if ((n == 1)) {
+
+            return new int[] { 0, 1 };
+        }
+
+        int[] fib = new int[n + 1];
+        fib[0] = 0;
+        fib[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+
+            fib[i] = fib[i - 1] + fib[i - 2];
+
+        } // for loop
+
+        return fib;
+
+    }// fibonacci()
+
+    /**
+     * Checks whether the given number is negative
+     * 
+     * @param n
+     *          The number to check
+     * 
+     * @throws IllegalArgumentException
+     *                                  if the number is negative
+     */
+
+    private void checkNotNegative(int n) {
+
+        if ((n < 0)) {
+
+            throw new IllegalArgumentException("Negative number: " + n);
+        }
+    }// checkNotNegative()
+
+    /**
      * Returns a string representation of the given array
      * 
      * @param arr
