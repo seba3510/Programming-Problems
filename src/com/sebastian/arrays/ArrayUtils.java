@@ -1,9 +1,13 @@
 package com.sebastian.arrays;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+
+import org.junit.Test;
 
 /**
  * This class contains utility methods for arrays
@@ -80,6 +84,15 @@ public class ArrayUtils {
         return arr.length;
     }// size()
 
+    /**
+     * Determines whether the given array is empty
+     * 
+     * @param arr
+     *            The given array
+     * @return
+     * 
+     *         {@code true} if the array is empty, {@code false} otherwise
+     */
     private boolean isEmpty(int[] arr) {
 
         return (size(arr) == 0);
@@ -244,6 +257,75 @@ public class ArrayUtils {
         return result;
 
     }// oddPositions()
+
+    public int[] digits(int num) {
+
+        // get the number of digits to determine size of array that contains the digits
+        int n = numDigits(num);
+
+        int[] digits = new int[n];
+
+        int i = 0;
+
+        // extract each digit from the number to store them in new list
+        while ((num > 0)) {
+
+            // store current last digit in list
+            int temp = num % 10;
+            digits[i++] = temp;
+
+            // extract current last digit from list
+            num = num / 10;
+
+        } // while loop
+
+        /**
+         * Temporary stack to hold the digits
+         * 
+         * NOTE: This stack was created due to the fact that when testing this function
+         * the digits where stored from right to left instead of the left to right
+         */
+        Stack<Integer> st = new Stack<Integer>();
+
+        pushItems(st, digits);
+
+        // create a new list to hold the result
+        int[] result = new int[digits.length];
+
+        // pop each element from the stack to the new list
+        for (int idx = 0; idx < result.length; idx++) {
+
+            result[idx] = st.pop();
+
+        } // for loop
+
+        return result;
+
+    }// digits()
+
+    /**
+     * Returns the number of digits that the given number contains
+     * 
+     * @param num
+     *            The given number
+     * @return
+     *         The number of digits that the given number contains
+     */
+    private int numDigits(int num) {
+
+        int count = 0;
+
+        // extract the digits from the number
+        while ((num > 0)) {
+
+            num /= 10; // num = num / 10
+
+            count++;
+
+        } // while loop
+
+        return count;
+    }// numDigits()
 
     public void selectionSort(int[] arr) {
 

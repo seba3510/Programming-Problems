@@ -154,7 +154,37 @@ public class ArrayUtilsTest {
         List<Integer> result2 = obj.oddPositions(arr2);
         assertEquals(expected2, result2.toString());
 
+        int[] arr3 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        String expected3 = "[2, 4, 6, 8, 10]";
+        List<Integer> result3 = obj.oddPositions(arr3);
+        assertEquals(expected3, result3.toString());
+
     }// testOddPositions()
+
+    @Test
+    public void testDigits() {
+
+        int num1 = 1234;
+        int[] result1 = obj.digits(num1);
+        String expected1 = "[1, 2, 3, 4]";
+        assertEquals(expected1, obj.display(result1));
+
+        int num2 = 12;
+        int[] result2 = obj.digits(num2);
+        String expected2 = "[1, 2]";
+        assertEquals(expected2, obj.display(result2));
+
+        int num3 = 1_000_000;
+        String expected3 = "[1, 0, 0, 0, 0, 0, 0]";
+        int[] result3 = obj.digits(num3);
+        assertEquals(expected3, obj.display(result3));
+
+        int num4 = 9;
+        int[] result4 = obj.digits(num4);
+        String expected4 = "[9]";
+        assertEquals(expected4, obj.display(result4));
+
+    }// testDigits()
 
     @Test
     public void testSelectionSort() {
