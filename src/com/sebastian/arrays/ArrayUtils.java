@@ -54,7 +54,9 @@ public class ArrayUtils {
      */
     private int findMax(int[] arr, int i) {
 
-        if ((i == arr.length - 1)) {
+        int n = arr.length;
+
+        if ((i == n - 1)) {
 
             return arr[i];
         }
@@ -65,6 +67,14 @@ public class ArrayUtils {
 
     }// findMax()
 
+    /**
+     * Returns the size of the given array
+     * 
+     * @param arr
+     *            The given array
+     * @return
+     *         The length of the array
+     */
     private int size(int[] arr) {
 
         return arr.length;
@@ -135,7 +145,7 @@ public class ArrayUtils {
      * @param arr
      *            The given array to check
      * @param key
-     *            The value to check if present in the array
+     *            The value to check its presence in the array
      * @return
      * 
      *         {@code true} if the element is present, {@code false} otherwise
@@ -235,39 +245,32 @@ public class ArrayUtils {
 
     }// oddPositions()
 
-    /**
-     * Returns a list containing the first n fibonacci numbers
-     * 
-     * @param n
-     *          The number to calculate its fibonacci sequence
-     * @return
-     *         A list containing the first n fibonacci numbers
-     * 
-     * @throws IllegalArgumentException
-     *                                  If the given number is negative
-     */
-    public int fib(int n) {
+    public void selectionSort(int[] arr) {
 
-        // TODO: Complete this method
-        checkNotNegative(n);
+        int n = arr.length;
 
-    }// fib()
+        for (int i = 0; i < n - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < n; j++) {
 
-    private void checkNotNegative(int n) {
+                if ((arr[j] < arr[minIdx])) {
+                    minIdx = j;
+                }
 
-        if ((n < 0)) {
+            } // for loop
 
-            throw new IllegalArgumentException("Negative number: " + n);
-        }
+            swap(arr, i, minIdx);
 
-    }// checkNotNegative()
+        } // for loop
 
-    public int[] merge(int[] arr1, int[] arr2) {
+    }// selectionSort()
 
-        // TODO: Complete this method
-        return null;
+    private void swap(int[] arr, int i, int minIdx) {
 
-    }// merge()
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }// swap()
 
     /**
      * Returns a string representation of the given array
