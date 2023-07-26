@@ -145,7 +145,7 @@ public class ArrayUtilsTest {
     public void testOddPositions() {
 
         int[] arr1 = { 1, 2, 3, 4, 5 };
-        String expected1 = "[1, 3, 5]";
+        String expected1 = "[2, 4]";
         List<Integer> result1 = obj.oddPositions(arr1);
         assertEquals(expected1, result1.toString());
 
@@ -202,5 +202,4 @@ public class ArrayUtilsTest {
 
     }// testFibonacciForNegative()
 
-}
-// class
+}// class
