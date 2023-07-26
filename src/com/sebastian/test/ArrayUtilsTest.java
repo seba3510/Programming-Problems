@@ -195,4 +195,14 @@ public class ArrayUtilsTest {
         assertEquals(expected1, obj.display(arr1));
     }// testSelectionSort()
 
+    @Test
+    public void testBubbleSort() {
+
+        int[] arr1 = { 5, 4, 3, 2, 1 };
+        obj.bubbleSort(arr1);
+        String expected1 = "[1, 2, 3, 4, 5]";
+        assertEquals(expected1, obj.display(arr1));
+
+    }// testBubbleSort()
+
 }// class
