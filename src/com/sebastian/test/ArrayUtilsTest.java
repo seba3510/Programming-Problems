@@ -1,6 +1,5 @@
 package com.sebastian.test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -8,11 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import javax.swing.tree.ExpandVetoException;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.TestTemplate;
 
 import com.sebastian.arrays.ArrayUtils;
 import com.sebastian.arrays.EmptyArrayException;
@@ -241,6 +237,21 @@ public class ArrayUtilsTest {
         obj.selectionSort(arr1);
         String expected1 = "[1, 2, 3, 4, 5]";
         assertEquals(expected1, obj.display(arr1));
+
+        int[] arr2 = { 5, 3 };
+        obj.selectionSort(arr2);
+        String expected2 = "[3, 5]";
+        assertEquals(expected2, obj.display(arr2));
+
+        int[] arr3 = new int[0];
+        String expected3 = "[]";
+        obj.selectionSort(arr3);
+        assertEquals(expected3, obj.display(arr3));
+
+        int[] arr4 = { 7 };
+        String expected4 = "[7]";
+        obj.selectionSort(arr4);
+        assertEquals(expected4, obj.display(arr4));
     }// testSelectionSort()
 
     @Test
@@ -251,6 +262,44 @@ public class ArrayUtilsTest {
         String expected1 = "[1, 2, 3, 4, 5]";
         assertEquals(expected1, obj.display(arr1));
 
+        int[] arr2 = { 5, 3 };
+        obj.bubbleSort(arr2);
+        String expected2 = "[3, 5]";
+        assertEquals(expected2, obj.display(arr2));
+
+        int[] arr3 = new int[0];
+        String expected3 = "[]";
+        obj.bubbleSort(arr3);
+        assertEquals(expected3, obj.display(arr3));
+
+        int[] arr4 = { 7 };
+        String expected4 = "[7]";
+        obj.bubbleSort(arr4);
+        assertEquals(expected4, obj.display(arr4));
+
     }// testBubbleSort()
+
+    @Test
+    public void testMergeSort() {
+
+        int[] arr1 = { 5, 4, 3, 2, 1 };
+        obj.mergeSort(arr1);
+        String expected1 = "[1, 2, 3, 4, 5]";
+        assertEquals(expected1, obj.display(arr1));
+
+        int[] arr2 = { 5, 3 };
+        obj.mergeSort(arr2);
+        String expected2 = "[3, 5]";
+        assertEquals(expected2, obj.display(arr2));
+
+        int[] arr3 = new int[0];
+        String expected3 = "[]";
+        assertEquals(expected3, obj.display(arr3));
+
+        int[] arr4 = { 7 };
+        String expected4 = "[7]";
+        obj.mergeSort(arr4);
+        assertEquals(expected4, obj.display(arr4));
+    }// testMergeSort()
 
 }// class
