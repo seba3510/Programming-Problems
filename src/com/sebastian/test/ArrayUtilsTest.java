@@ -302,4 +302,29 @@ public class ArrayUtilsTest {
         assertEquals(expected4, obj.display(arr4));
     }// testMergeSort()
 
+    @Test
+    public void testQuicksort() {
+
+        int[] arr1 = { 5, 4, 3, 2, 1 };
+        obj.quickSort(arr1);
+        String expected1 = "[1, 2, 3, 4, 5]";
+        assertEquals(expected1, obj.display(arr1));
+
+        int[] arr2 = { 5, 3 };
+        obj.quickSort(arr2);
+        String expected2 = "[3, 5]";
+        assertEquals(expected2, obj.display(arr2));
+
+        int[] arr3 = new int[0];
+        String expected3 = "[]";
+        obj.quickSort(arr3);
+        assertEquals(expected3, obj.display(arr3));
+
+        int[] arr4 = { 7 };
+        String expected4 = "[7]";
+        obj.quickSort(arr4);
+        assertEquals(expected4, obj.display(arr4));
+
+    }// testQuicksort()
+
 }// class

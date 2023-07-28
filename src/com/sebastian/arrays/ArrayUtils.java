@@ -1,20 +1,15 @@
 package com.sebastian.arrays;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
-
-import org.junit.Test;
 
 /**
  * This class contains utility methods for arrays
  * 
  * @author
  *         Sebastian L. Corporan Berrios
- *         date: 07/13/2023
+ * 
  */
 public class ArrayUtils {
 
@@ -105,6 +100,9 @@ public class ArrayUtils {
      *            The array to reverse
      * @return
      *         The modified array with its elements in reversed order
+     * 
+     * @throws EmptyArrayException
+     *                             If the array is empty
      */
     public int[] reverse(int[] arr) {
 
@@ -274,7 +272,7 @@ public class ArrayUtils {
             int temp = num % 10;
             digits[i++] = temp;
 
-            // extract current last digit from list
+            // extract current last digit from number
             num = num / 10;
 
         } // while loop
@@ -404,6 +402,9 @@ public class ArrayUtils {
      * @return
      * 
      *         A list containing the first n fibonacci numbers
+     * 
+     * @throws IllegalArgumentException
+     *                                  If n is negative
      */
     public int[] fibonacci(int n) {
 
@@ -450,6 +451,171 @@ public class ArrayUtils {
             throw new IllegalArgumentException("Negative number: " + n);
         }
     }// checkNotNegative()
+
+    public void mergeSort(int[] arr) {
+
+        int n = arr.length;
+
+        if ((n < 2)) {
+            return;
+        }
+
+        int mid = n / 2;
+
+        // divide input array into 2 halves( sub arrays)
+        int[] left = new int[mid];
+        int[] right = new int[n - mid];
+
+        // fill both sub arrays
+        for (int i = 0; i < mid; i++) {
+            left[i] = arr[i];
+
+        } // for loop
+
+        for (int i = mid; i < n; i++) {
+            right[i - mid] = arr[i];
+        } // for loop
+
+        // sort both halves of the array
+        mergeSort(left);
+        mergeSort(right);
+
+        // merge left and right sub arrays
+        merge(arr, left, right);
+    }// mergeSort()
+
+    private void merge(int[] arr, int[] left, int[] right) {
+
+        int leftSize = left.length;
+        int rightSize = right.length;
+
+        int i = 0; // iterator for the left sub array
+        int j = 0; // iterator for the right sub array
+        int k = 0; // iterator for the merged array
+
+        while ((i < leftSize) && (j < rightSize)) {
+
+            // add smallest element of one of the two arrays into the merged array
+            if ((left[i] <= right[j])) {
+
+                arr[k] = left[i++];
+
+            }
+
+            else {
+
+                arr[k] = right[j++];
+
+            }
+
+            k++;
+
+        } // while loop
+
+        // add remaining elements of left array to merged array
+        while ((i < leftSize)) {
+            arr[k++] = left[i++];
+        } // while loop
+
+        // add remaining elements of right array to the merged array
+        while ((j < rightSize)) {
+
+            arr[k++] = right[j++];
+
+        } // while loop
+
+    }// merge()
+
+    /**
+     * Sorts the given array using the QuickSort algorithm
+     * 
+     * @param arr
+     *            The array to be sorted
+     */
+    public void quickSort(int[] arr) {
+        /*
+         * Steps of Quick Sort Algorithm
+         * 
+         * 1. choose one of the numbers in our array as the pivot
+         * 2.Move all numbers that are lower than the pivot to the left and all the
+         * numbers higher than
+         * the pivot move them to the right of the pivot( partitioning) . The pivot will
+         * be the last number in the array
+         * 
+         * 3. Recursively quicksort all the values to the left of the pivot and all the
+         * values to the right of the pivot
+         */
+
+        int n = arr.length;
+        int lo = 0;
+        int hi = n - 1;
+
+        quickSort(arr, lo, hi);
+    }// quickSort()
+
+    private void quickSort(int[] arr, int lo, int hi) {
+
+        if ((lo <= hi)) {
+
+            // choose pivot index
+            int pivot = partition(arr, lo, hi);
+
+            quickSort(arr, lo, pivot - 1); // sort left partition of array
+            quickSort(arr, pivot + 1, hi); // sort right partition of array
+        } // if()
+
+    }// quickSort()
+
+    /**
+     * Divides the specified array into those elements
+     * that are smaller or equal to thee pivot and those that are greater
+     * 
+     * @param arr
+     *            The given array
+     * @param lo
+     *            The lowest index in the array
+     * @param hi
+     *            The highest index in the array
+     * @return
+     *         The index of the pivot
+     */
+    private int partition(int[] arr, int lo, int hi) {
+
+        /**
+         * The purpose of partitioning the array is to move all the elements that are
+         * smaller than the pivot
+         * to the left of the pivot. All the elements that are greater than the pivot
+         * are moved to the right of the pivot
+         */
+        int left = lo + 1;
+        int right = hi;
+
+        int pivot = arr[lo];
+
+        while ((left <= right)) {
+
+            while ((left <= right) && (arr[left] <= pivot)) {
+
+                left++;
+
+            } // inner while loop
+
+            while ((right >= lo) && (arr[right] > pivot)) {
+                right--;
+            } // inner inner while loop
+
+            if ((left < right)) {
+
+                // swap unsorted elements
+                swap(arr, left, right);
+            }
+
+        } // while loop
+
+        swap(arr, lo, right); // put the pivot in place
+
+        return right;
+    }// partition()
 
     /**
      * Returns a string representation of the given array
