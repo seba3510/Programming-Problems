@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -191,7 +192,6 @@ public class ArrayUtilsTest {
 
             fail("Test failed for negative number");
         } catch (IllegalArgumentException e) {
-            // TODO: handle exception
 
             String expected = e.getMessage();
             String result = "Negative number: -10";
@@ -326,5 +326,47 @@ public class ArrayUtilsTest {
         assertEquals(expected4, obj.display(arr4));
 
     }// testQuicksort()
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void testConcatenate() {
+
+        List<Integer> l1 = new ArrayList<Integer>();
+
+        l1.add(1);
+        l1.add(2);
+        l1.add(3);
+        l1.add(4);
+        l1.add(5);
+
+        List<Integer> l2 = new ArrayList<>();
+
+        l2.add(6);
+        l2.add(7);
+        l2.add(8);
+        l2.add(9);
+        l2.add(10);
+
+        String expected1 = "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]";
+
+        List<Integer> result1 = obj.concatenate(l1, l2);
+        assertEquals(expected1, result1.toString());
+
+        List<String> l3 = new ArrayList<>();
+
+        l3.add("a");
+        l3.add("b");
+        l3.add("c");
+
+        List<String> l4 = new ArrayList<>();
+
+        l4.add("1");
+        l4.add("2");
+        l4.add("3");
+
+        String expected2 = "[a, b, c, 1, 2, 3]";
+        List<String> result2 = obj.concatenate(l3, l4);
+        assertEquals(expected2, result2.toString());
+    }// testConcatenate()0
 
 }// class

@@ -9,9 +9,10 @@ import java.util.Stack;
  * 
  * @author
  *         Sebastian L. Corporan Berrios
+ * @param <T>
  * 
  */
-public class ArrayUtils {
+public class ArrayUtils<T> {
 
     /**
      * Default constructor
@@ -363,9 +364,9 @@ public class ArrayUtils {
      */
     private void swap(int[] arr, int i, int j) {
 
-        int temp = arr[j];
-        arr[j] = arr[i];
-        arr[i] = temp;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }// swap()
 
     /**
@@ -452,6 +453,12 @@ public class ArrayUtils {
         }
     }// checkNotNegative()
 
+    /**
+     * Sorts te given array using the MergeSort algorithm
+     * 
+     * @param arr
+     *            The array to sort
+     */
     public void mergeSort(int[] arr) {
 
         int n = arr.length;
@@ -533,7 +540,7 @@ public class ArrayUtils {
      *            The array to be sorted
      */
     public void quickSort(int[] arr) {
-        /*
+        /**
          * Steps of Quick Sort Algorithm
          * 
          * 1. choose one of the numbers in our array as the pivot
@@ -568,7 +575,7 @@ public class ArrayUtils {
 
     /**
      * Divides the specified array into those elements
-     * that are smaller or equal to thee pivot and those that are greater
+     * that are smaller or equal to the pivot and those that are greater
      * 
      * @param arr
      *            The given array
@@ -583,9 +590,8 @@ public class ArrayUtils {
 
         /**
          * The purpose of partitioning the array is to move all the elements that are
-         * smaller than the pivot
-         * to the left of the pivot. All the elements that are greater than the pivot
-         * are moved to the right of the pivot
+         * smaller than the pivot to the left of the pivot. All the elements that are
+         * greater than the pivot are moved to the right of the pivot
          */
         int left = lo + 1;
         int right = hi;
@@ -616,6 +622,34 @@ public class ArrayUtils {
 
         return right;
     }// partition()
+
+    /**
+     * Concatenates two lists into a single one
+     * 
+     * @param l1
+     *             The first list
+     * @param arr2
+     *             The second list
+     * @return
+     *         A new list that contains that has all the elements of the two arrays
+     */
+    public List<T> concatenate(List<T> l1, List<T> l2) {
+
+        List<T> result = new ArrayList<>();
+
+        for (int i = 0; i < l1.size(); i++) {
+            result.add(l1.get(i));
+        } // for loop
+
+        for (int j = 0; j < l2.size(); j++) {
+
+            result.add(l2.get(j));
+
+        } // for loop
+
+        return result;
+
+    }// concatenate()
 
     /**
      * Returns a string representation of the given array
